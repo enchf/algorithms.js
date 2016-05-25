@@ -1,5 +1,5 @@
-function Tests(assert) {
-  this.assert = assert;
+function Tests() {
+  this.assert = null;
   this.suites = [];
   this.url = null;
   this.data = {};
@@ -7,14 +7,21 @@ function Tests(assert) {
 
 /**
  * Executes the testing with the configuration set by the builder functions.
+ * @param assert QUnit assertion object.
  */
 Tests.prototype.test = function() {
-  var exec = this.execute(assert.async());
-  if (this.url) {
-	$.getJSON(this.url, exec.bind(this));
-  } else {
-	exec.call(this,this.data);
-  }
+  return (function(assert) {
+	var exec;
+	  
+	this.assert = assert;
+	exec = this.execute(assert.async());
+	  
+	if (this.url) {
+	  $.getJSON(this.url, exec.bind(this));
+	} else {
+	  exec.call(this,this.data);
+	}
+  }).bind(this);
 };
 
 /**
@@ -63,13 +70,4 @@ Tests.prototype.dataset = function(data) {
 Tests.prototype.remote = function(url) {
   this.url = url;
   return this;
-};
-
-/**
- * Factory method to create a test suite.
- * @param assert QUnit assertion object.
- * @returns {Tests} Test suite object.
- */
-Tests.use = function(assert) {
-  return new Tests(assert);
 };

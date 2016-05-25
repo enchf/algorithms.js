@@ -12,3 +12,5 @@ Numbers.test.toRoman = function(assert, json) {
     assert.strictEqual(Numbers.toRoman(test.params), test.expected);
   }
 };
+
+QUnit.test("Roman numbers conversion", new Tests().addSuite(Numbers.test.toRoman).remote('data/roman.json').test());
