@@ -1,0 +1,28 @@
+{
+  "numbers": [
+  	"I","II","III","IV","V","VI","VII","VIII","IX","X",
+  	"XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
+  	"XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX"
+  ],
+  "special": [
+    { "expected": "XXXIII", "params": 33 },
+    { "expected": "XXXIX",  "params": 39 },
+    { "expected": "XL", "params": 40 },
+    { "expected": "L",  "params": 50 },
+    { "expected": "C",  "params": 100 },
+    { "expected": "XLIX",  "params": 49 },
+    { "expected": "LI",    "params": 51 },
+    { "expected": "XLV",   "params": 45 },
+    { "expected": "LV",    "params": 55 },
+    { "expected": "LXX",   "params": 70 },
+    { "expected": "LXXXI", "params": 81 },
+    { "expected": "C", "params": 100 },
+    { "expected": "XC", "params": 90 },
+    { "expected": "XCIX", "params": 99 },
+    { "expected": "D", "params": 500 },
+    { "expected": "M", "params": 1000 },
+    { "expected": "MMM", "params": 3000 },
+    { "expected": "MMCDLXXVII", "params": 2477 },
+    { "expected": "MDCCXCII", "params": 1792 }
+  ]
+}
