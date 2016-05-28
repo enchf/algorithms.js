@@ -20,8 +20,8 @@ Graph.prototype.addVertex = function(values) {
 };
 
 Graph.prototype.addEdge = function(a,b) {
-  a = this.vertex[a.toString()];
-  b = this.vertex[b.toString()];
+  a = this.toVertex(a);
+  b = this.toVertex(b);
   if (a && b) {
 	a.connect(b);
 	b.connect(a);
@@ -30,4 +30,14 @@ Graph.prototype.addEdge = function(a,b) {
 
 Vertex.prototype.connect = function(vertex) {
   this.edges[vertex.label] = vertex;
+};
+
+Graph.prototype.toVertex = function(vertexValue) {
+  return this.vertex[vertexValue.toString()];
+};
+
+Graph.prototype.isConnected = function(a,b) {
+  a = this.toVertex(a);
+  b = this.toVertex(b);
+  return a && b && a.edges(b.label) && b.edges(a.label);
 };
