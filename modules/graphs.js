@@ -1,7 +1,3 @@
-function Graph() {
-  this.vertices = {};
-}
-
 function Vertex(value) {
   this.label = value;
   this.weight = 0;
@@ -9,10 +5,17 @@ function Vertex(value) {
   this.data = null;
 }
 
+Vertex.prototype.connect = function(vertex) {
+  this.edges[vertex.label] = vertex;
+};
+
+function Graph() {
+  this.vertices = {};
+}
+
 Graph.prototype.addVertex = function(values) {
   var graph = this;
-  
-  values = Array.isArray(values) || [values];
+  values = Array.isArray(values) ? values : [values];
   values.forEach(function(val, i, arr) {
 	val = val.toString();
 	graph.vertices[val] = new Vertex(val); 
@@ -26,10 +29,6 @@ Graph.prototype.addEdge = function(a,b) {
 	a.connect(b);
 	b.connect(a);
   }
-};
-
-Vertex.prototype.connect = function(vertex) {
-  this.edges[vertex.label] = vertex;
 };
 
 Graph.prototype.toVertex = function(vertexValue) {
@@ -58,4 +57,15 @@ Graph.prototype.vertexMap = function() {
 	map[v] = this.vertices[v];
   }
   return map;
+};
+
+Graph.prototype.edgeMatrix = function() {
+  var matrix = {};
+  for (var v in this.vertices) {
+    matrix[v] = {};
+    for (var e in this.vertices[v].edges) {
+      matrix[v][e] = true;
+    }
+  }
+  return matrix;
 };

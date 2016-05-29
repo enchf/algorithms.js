@@ -1,15 +1,17 @@
 function Graphs() {};
 
 Graphs.isVertexCover = function(g, vertices) {
-  var vmap;
-  vmap = g.vertexMap();
+  var edges;
+  edges = g.edgeMatrix();
   for (var v in vertices) {
-	if (vmap[v]) {
-      for (var x in vmap[v].edges) {
-    	if (vmap[x]) delete vmap[x];
+    if (edges[v]) {
+      for (var e in g.vertices[v]) {
+        if (edges[v][e]) delete edges[v][e];
+        if (edges[e][v]) delete edges[e][v];
+        if (Object.keys(edges[v]).length === 0) delete edges[v];
+        if (Object.keys(edges[e]).length === 0) delete edges[e];
       }
-      delete vmap[v];
-	}
+    }
   }
-  return Object.keys(vmap).length === 0;
+  return Object.keys(edges).length === 0;
 };
