@@ -38,7 +38,7 @@ Graph.prototype.toVertex = function(vertexValue) {
 Graph.prototype.isConnected = function(a,b) {
   a = this.toVertex(a);
   b = this.toVertex(b);
-  return a && b && a.edges(b.label) && b.edges(a.label);
+  return a && b && a.edges[b.label] && b.edges[a.label];
 };
 
 Graph.prototype.edgesOf = function(vertex) {

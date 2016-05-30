@@ -13,10 +13,16 @@ Graph.test.load = function(graph) {
   return g;
 };
 
-Graph.test.vertexSet = function(assert, json) {
-  console.log("vdsad");
+Graph.test.vertexSet = function(assert,json) {
   var g = Graph.test.load(json.graphs[0]);
-  assert.deepEqual(Object.keys(g.vertices),['a','b','c','d','e','f','g','h','i']);
+  assert.deepEqual(Object.keys(g.vertices),['a','b','c','d','e','f','g','h','i'],'Vertices set for Graph 0');
 };
 
-QUnit.test("Test vertex set", Graph.test.testSuite.test(Graph.test.vertexSet));
+Graph.test.edgeSet = function(assert,json) {
+  var g = Graph.test.load(json.graphs[0]);
+  assert.ok(g.isConnected('a','b'),'A and B are connected in Graph 0');
+  assert.notOk(g.isConnected('a','c'),'A and C are not connected in Graph 0');
+};
+
+QUnit.test("Test vertices are set", Graph.test.testSuite.test(Graph.test.vertexSet));
+QUnit.test("Test edges are set", Graph.test.testSuite.test(Graph.test.edgeSet));
