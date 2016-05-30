@@ -1,0 +1,8 @@
+{
+  "graphs": [
+    { 
+      "vertices": ["a","b","c","d","e","f","g","h","i"],
+      "edges": ["a,b","b,c","b,d","b,f","c,e","d,g","d,i","e,f","e,h","f,g","g,h","g,i","h,i"]
+    }
+  ]
+}
