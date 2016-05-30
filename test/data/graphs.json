@@ -2,7 +2,25 @@
   "graphs": [
     { 
       "vertices": ["a","b","c","d","e","f","g","h","i"],
-      "edges": ["a,b","b,c","b,d","b,f","c,e","d,g","d,i","e,f","e,h","f,g","g,h","g,i","h,i"]
+      "edges": ["a,b","b,c","b,d","b,f","c,e","d,g","d,i","e,f","e,h","f,g","g,h","g,i","h,i"],
+      "tests": {
+        "noedges": ["a,c","b,i","c,g","f,h"],
+        "edge-matrix": {
+          "a": { "b": true },
+          "b": { "a": true, "c": true, "d": true, "f": true },
+          "c": { "b": true, "e": true },
+          "d": { "b": true, "g": true, "i": true },
+          "e": { "c": true, "f": true, "h": true },
+          "f": { "b": true, "e": true, "g": true },
+          "g": { "d": true, "f": true, "h": true, "i": true },
+          "h": { "e": true, "g": true, "i": true },
+          "i": { "d": true, "g": true, "h": true }
+        },
+        "vertex-cover": {
+          "yes": [["b","e","g","i"],["d","f","c","a","g","h"]],
+          "no": [["a","c","d","h"],["b","e","d","h"],["d","h","f","b"]]
+        }
+      }
     }
   ]
 }
