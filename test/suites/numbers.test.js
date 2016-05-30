@@ -16,4 +16,4 @@ Numbers.test.toRoman = function(assert, json) {
   }
 };
 
-QUnit.test("Roman numbers conversion", new Tests().addSuite(Numbers.test.toRoman).remote('data/roman.json').test());
+QUnit.test("Roman numbers conversion", new Tests().remote('data/roman.json').test(Numbers.test.toRoman));
