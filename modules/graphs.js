@@ -1,25 +1,42 @@
+/**
+ * Abstraction of a graph vertex.
+ * Value is converted to String as the vertex label.
+ * Weight is initialized to 1.
+ * Edges is defined as a map to optimize edge access.
+ * An extra data object is set to use miscellaneously in algorithms (i.e. Graph coloring).
+ */
 function Vertex(value) {
-  this.label = value;
-  this.weight = 0;
+  this.label = value.toString();
+  this.value = value;
+  this.weight = 1;
   this.edges = {};
   this.data = null;
 }
 
+/**
+ * Adds the reference of another vertex, to create an edge.
+ */
 Vertex.prototype.connect = function(vertex) {
   this.edges[vertex.label] = vertex;
 };
 
+
+/**
+ * Graph abstraction.
+ * Mantains a dictionary of vertices.
+ */
 function Graph() {
   this.vertices = {};
 }
 
-Graph.prototype.addVertex = function(values) {
+Graph.prototype.addVertex = function(vertex) {
+  var v = new Vertex(vertex);
+  this.vertices[vertex.label] = vertex;
+};
+
+Graph.prototype.addVertices = function(vertices) {
   var graph = this;
-  values = Array.isArray(values) ? values : [values];
-  values.forEach(function(val, i, arr) {
-	val = val.toString();
-	graph.vertices[val] = new Vertex(val); 
-  });
+  vertices.forEach(function(val) { graph.addVertex(val); });
 };
 
 Graph.prototype.addEdge = function(a,b) {

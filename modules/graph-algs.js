@@ -17,7 +17,6 @@ Graphs.isVertexCover = function(g, vertices) {
           if (Object.keys(edges[e]).length === 0) delete edges[e];
         }
       }
-      console.log(edges[v]);
     }
   }
   return Object.keys(edges).length === 0;
