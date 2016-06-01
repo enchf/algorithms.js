@@ -43,8 +43,8 @@ Graph.prototype.addEdge = function(a,b) {
   a = this.toVertex(a);
   b = this.toVertex(b);
   if (a && b) {
-	a.connect(b);
-	b.connect(a);
+    a.connect(b);
+    b.connect(a);
   }
 };
 
@@ -62,8 +62,8 @@ Graph.prototype.edgesOf = function(vertex) {
   var arr = null;
   vertex = this.toVertex(vertex);
   if (vertex) {
-	arr = [];
-	for (var x in vertex.edges) arr.push(x);
+    arr = [];
+    for (var x in vertex.edges) arr.push(x);
   }
   return arr;
 };
@@ -71,7 +71,7 @@ Graph.prototype.edgesOf = function(vertex) {
 Graph.prototype.vertexMap = function() {
   var map = {};
   for (var v in this.vertices) {
-	map[v] = this.vertices[v];
+    map[v] = this.vertices[v];
   }
   return map;
 };
